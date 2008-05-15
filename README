@@ -8,5 +8,5 @@ it.
 It will fetch and rebase, then do an install, then check to see if a
 database upgrade is needed. 
 
-I'm about to extend it to email if the install fails or an upgrade is
-needed
+It will email to the address provided in the arguments if the install
+fails, or if a database upgrade is needed
