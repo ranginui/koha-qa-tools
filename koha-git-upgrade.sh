@@ -3,6 +3,9 @@
 # Copyright 2008 
 # Chris Cormack chris@bigballofwax.co.nz
 
+# This is designed to be run as a cron job, and the output emailed
+# It checks an install still works
+
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
