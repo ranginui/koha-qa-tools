@@ -19,8 +19,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if [ $# -ne 3 ]; then
-  echo 1>&2 Usage: $0 path/to/git/repo path/to/koha-install-log opacurl
+if [ $# -ne 4 ]; then
+  echo 1>&2 Usage: $0 path/to/git/repo path/to/koha-install-log opacurl emailaddress
   exit 127
 fi
 
@@ -48,13 +48,13 @@ fi
 
 if make install; then
   if wget --delete-after $3 2>&1 | grep "/cgi-bin/koha/maintenance.pl"; then
-    echo "Database upgrade needed";
+    echo "Database upgrade needed" | mailx -s "Koha Database Needs Upgrade" $4
     exit 127
   else
     echo "Upgrade finished";
   fi
 else
-  echo "Can't install";
+  echo "Can't install" | mailx -s "Koha Installation failed" $4
   exit 127
 fi
 
