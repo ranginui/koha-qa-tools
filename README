@@ -1,0 +1,12 @@
+koha-git-upgrade.sh
+-------------------
+
+This script is designed to be run as a cron job, it requires that you
+have an existing git repository and that you have done an install from
+it.
+
+It will fetch and rebase, then do an install, then check to see if a
+database upgrade is needed. 
+
+I'm about to extend it to email if the install fails or an upgrade is
+needed
