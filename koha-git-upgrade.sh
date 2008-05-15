@@ -1,18 +1,12 @@
 #!/bin/bash
 
 if [ $# -ne 3 ]; then
-  echo 1>&2 Usage: $0 path/to/git/repo path/to/koha-install-log logfile
+  echo 1>&2 Usage: $0 path/to/git/repo path/to/koha-install-log opacurl
   exit 127
 fi
 
-TARGET=$3
-
-# capture STDOUT and STDERR to logfile
-exec &>$TARGET
-
 # change to git repo
 cd $1
-
 
 #clean up so we do a fresh make
 if make clean; then
@@ -32,6 +26,10 @@ if git fetch; then
   fi
 fi
 
-make install
-
+if make install; then
+  wget --delete-after $3 2>&1 | grep "/cgi-bin/koha/maintenance.pl"
+else
+  echo "Can't install";
+  exit 127
+fi
 
