@@ -10,3 +10,10 @@ database upgrade is needed.
 
 It will email to the address provided in the arguments if the install
 fails, or if a database upgrade is needed
+
+
+profile.sh
+----------
+
+This script is designed to be run against a working koha to profile
+and spot any dodgy code
