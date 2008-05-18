@@ -4,7 +4,7 @@
 # Chris Cormack chris@bigballofwax.co.nz
 
 # This is designed to profile the koha code
-# It expects a working koha
+# It expects a working koha and Devel::NYTProf
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,3 +19,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+if [ $# -ne 2 ]; then
+  echo 1>&2 Usage: $0 path/to/git/repo path/to/koha-conf.xml
+  exit 127
+fi
+
+export KOHA_CONF=$2
+
+perl -I$1 -d:NYTProf $1/mainpage.pl
+nytprofhtml
