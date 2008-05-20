@@ -19,10 +19,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use Test::More tests => 1;
+use Test::More tests => 2;
 use Test::WWW::Mechanize;
 use strict;
 
 my $mech = Test::WWW::Mechanize->new();
 
 $mech->get_ok($ARGV[0]);
+$mech->content_contains("Welcome to Koha","We are at the front page of the opac");
