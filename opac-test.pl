@@ -26,4 +26,4 @@ use strict;
 my $mech = Test::WWW::Mechanize->new();
 
 $mech->get_ok($ARGV[0]);
-$mech->content_contains("Welcome to Koha","We are at the front page of the opac");
+$mech->content_contains("Koha","We are at the front page of the opac");
